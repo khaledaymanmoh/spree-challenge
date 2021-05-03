@@ -102,19 +102,22 @@ const Table = ({ sortValue, filterValue, searchValue }) => {
   return (
     <div>
       <StyledTable>
-        <tr>
-          <th></th>
-          <th>ID Number</th>
-          <th> </th>
-          <th>Status</th>
-          <th>Supplier</th>
-          <th>Date</th>
-        </tr>
-        {currentItems.length
-          ? currentItems.map((order) => (
+        <thead>
+          <tr>
+            <th></th>
+            <th>ID Number</th>
+            <th> </th>
+            <th>Status</th>
+            <th>Supplier</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentItems.length ? (
+            currentItems.map((order) => (
               <tr className='row' key={order.id}>
                 <td>
-                  <input type='checkbox' class='check-box' />
+                  <input type='checkbox' className='check-box' />
                 </td>
                 <td className='order-id'>#{order.id}</td>
                 <td>{`${order.customer.fname} ${order.customer.lname}`}</td>
@@ -128,7 +131,12 @@ const Table = ({ sortValue, filterValue, searchValue }) => {
                 </td>
               </tr>
             ))
-          : ''}
+          ) : (
+            <tr>
+              <td></td>
+            </tr>
+          )}
+        </tbody>
       </StyledTable>
       <Pagination className='pagination'>
         <ul className='page-links'>
