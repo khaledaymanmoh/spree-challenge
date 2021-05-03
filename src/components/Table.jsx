@@ -114,7 +114,7 @@ const Table = ({ sortValue, filterValue, searchValue }) => {
           ? currentItems.map((order) => (
               <tr className='row' key={order.id}>
                 <td>
-                  <input type='checkbox' />
+                  <input type='checkbox' class='check-box' />
                 </td>
                 <td className='order-id'>#{order.id}</td>
                 <td>{`${order.customer.fname} ${order.customer.lname}`}</td>
@@ -151,13 +151,17 @@ const Table = ({ sortValue, filterValue, searchValue }) => {
 
 // Styles
 const StyledTable = styled.table`
+  border-collapse: collapse;
   color: #707683;
   font-size: 13px;
   background-color: white;
   width: calc(100% - 35px);
   margin-left: 15px;
   margin-right: 38px;
-  padding: 22px;
+  td,
+  th {
+    padding: 22px;
+  }
   tr {
     height: 64px;
     text-align: left;
@@ -168,7 +172,8 @@ const StyledTable = styled.table`
   }
   .row {
     &:hover {
-      background: #f3f7fb;
+      background-color: #f3f7fb;
+      width: 100%;
     }
   }
 `;
